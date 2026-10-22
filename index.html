@@ -129,12 +129,16 @@ p { text-wrap: pretty; }
 .slogan { font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 2rem); margin-top: 40px; display: inline-flex; align-items: baseline; gap: 0.3em; }
 
 /* ===== About: portrait in dots ===== */
-.head-split { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 30px; margin-bottom: clamp(44px, 6vw, 80px); }
+.head-split { margin-bottom: clamp(26px, 3.4vw, 44px); }
 .head-split h2, .h2 { font-size: clamp(2.1rem, 4.2vw, 3.6rem); }
 .sub { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(30px, 6vw, 90px); align-items: center; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: clamp(30px, 5vw, 70px); align-items: center; }
+.about-text { max-width: 36em; }
+.meet { display: flex; flex-direction: column; align-items: center; }
+.meet img { width: min(230px, 70%); height: auto; filter: drop-shadow(0 18px 20px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
+.meet .bubble { margin: 0 0 6px; max-width: 250px; font-size: 1.02rem; border-radius: 20px 20px 20px 4px; transform: translateX(-30px); }
 .about-hello { font-family: var(--display); font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; margin-bottom: 22px; }
-.about-text p:not(.about-hello) { font-size: 1.2rem; color: var(--ink-soft); line-height: 1.9; }
+.about-text > p:not(.about-hello) { font-size: 1.2rem; color: var(--ink-soft); line-height: 1.9; }
 .portrait { position: relative; min-width: 0; }
 .portrait canvas { width: 100%; aspect-ratio: 4 / 5; max-height: 68svh; display: block; }
 .mess-tabs { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; }
@@ -295,7 +299,8 @@ p { text-wrap: pretty; }
   #dotCanvas { width: min(100%, 42svh); }
   .pains-lead, .why-head { position: static; }
   .head-split { grid-template-columns: minmax(0, 1fr); }
-  .portrait { max-width: 440px; }
+  .meet img { width: 170px; }
+  .meet .bubble { transform: none; }
   .helper { position: static; justify-content: center; margin-top: 8px; }
   .helper .bubble { margin-bottom: 40px; }
   .opt-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -370,7 +375,7 @@ p { text-wrap: pretty; }
 <main>
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero">
-  <div class="note"><b>מה השתנה</b>ציור הנקודות מתפרק ומתחבר לאובייקט הבא (אפשר להעביר עליו את העכבר). אין עיגול מאחוריו, והוא גולש מהמסך. "אתם רואים" ענק, והנקודה בסוף היא נקודה צהובה.</div>
+  <div class="note"><b>מה השתנה</b>ציור הנקודות מתפרק ומתחבר לאובייקט הבא (אפשר להעביר עליו את העכבר). נשארו כל התנועות: דברים נופלים בין הכסאות, אדים ופירורים מהלחם, טיפות זיעה, וחול שנשפך מהשעון עם שני מחוגים צהובים. אין עיגול מאחוריו, והוא גולש מהמסך. "אתם רואים" ענק, והנקודה בסוף היא נקודה צהובה.</div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">נקודת מבט של לקוחות, היא לא נקודת המבט שלכם- בעלי העסק...</p>
@@ -426,33 +431,24 @@ p { text-wrap: pretty; }
 
 <!-- ===== About ===== -->
 <section class="band" id="about">
-  <div class="note"><b>מה השתנה</b>במקום תמונה: תיקיות, אקסלים ופתקים מנקודות שמתחברים למערכת אחת מסודרת, בדיוק מה שכתוב בפסקה. אפשר ללחוץ על "הבלגן" ו"המערכת". הרובוט מופיע רק כאן ועוד פעם אחת.</div>
+  <div class="note"><b>מה השתנה</b>כותרת, שורת המשנה והטקסט יושבים יחד בצד ימין, והרובוט עם הבועה לצידם. הרובוט מופיע רק כאן ועוד פעם אחת.</div>
   <div class="wrap">
-    <div class="head-split rv">
+    <div class="about-grid">
+      <div class="about-text rv">
+        <div class="head-split">
       <div>
         <p class="eyebrow">רגע... אתם ודאי שואלים,</p>
         <h2>מי אני בכלל?</h2>
       </div>
       <p class="sub">נחזור לנקודת ההתחלה, להיכרות קצרה.</p>
     </div>
-
-    <div class="about-grid">
-      <div class="about-text rv">
         <p class="about-hello">נעים מאוד, אני בלי דזימטרובסקי<span class="pd"></span></p>
         <p>אני מתמחה בתחום המחשוב והטכנולוגיה ועוסקת בבניית מערכות חכמות לבעלי עסקים. אני עוזרת להם להכניס קצת סדר לעסק, למצוא ידיים ורגליים בבלגן הדיגיטלי ולהמיר את עשרות התיקיות, האקסלים והתזכורות במערכת אחת חכמה- <strong class="marker teal">שפשוט עובדת.</strong></p>
       </div>
-      <figure class="portrait rv">
-        <canvas id="mess" role="img" aria-label="עשרות תיקיות, אקסלים ופתקים מתחברים למערכת אחת"></canvas>
-        <div class="helper">
-          <img src="img/robot-hello-3d.png" alt="הרובוט של DBIZ">
-          <p class="bubble">ואני העוזר שלה-<br><strong>ביחד אנחנו צוות מנצח 😊</strong></p>
-        </div>
-        <figcaption class="mess-tabs">
-          <button type="button" aria-pressed="true">הבלגן</button>
-          <span aria-hidden="true"></span>
-          <button type="button" aria-pressed="false">המערכת</button>
-        </figcaption>
-      </figure>
+      <div class="meet rv">
+        <p class="bubble">ואני העוזר שלה-<br><strong>ביחד אנחנו צוות מנצח 😊</strong></p>
+        <img src="img/robot-hello-3d.png" alt="הרובוט של DBIZ מברך לשלום">
+      </div>
     </div>
 
     <div class="qa-list">
@@ -773,7 +769,7 @@ p { text-wrap: pretty; }
 
   function drawAll() { drawEdges(); drawSol(); drawCup(); }
   drawAll();
-  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawAll(); sizeHero(); sizeMess(); }, 150); });
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawAll(); sizeHero(); }, 150); });
   document.fonts && document.fonts.ready.then(drawEdges);
 
   /* ---------- hero: the dot picture breaks apart and regroups ---------- */
@@ -782,19 +778,22 @@ p { text-wrap: pretty; }
   const hex = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   const scenes = ORDER.map((k) => {
     const pal = S[k].pal.map(hex);
-    return S[k].d.map(([x, y, r, c]) => ({ x, y, r, c: pal[c] })).sort((a, b) => a.y - b.y || a.x - b.x);
+    const raw = S[k].pal; return S[k].d.map(([x, y, r, c]) => { const h = k === 'watch' ? (raw[c] === '#ffffff' ? 1 : raw[c] === '#ffd84d' ? 2 : 0) : 0; return { x, y, r, h, c: h ? hex('#ffd84d') : pal[c] }; }).sort((a, b) => a.y - b.y || a.x - b.x);
   });
   const N = Math.max(...scenes.map((s) => s.length));
-  const P = Array.from({ length: N }, () => ({ fx: 300, fy: 300, fr: 0, fc: [20, 33, 31], tx: 300, ty: 300, tr: 0, tc: [20, 33, 31], mx: 0, my: 0, dl: 0, x: 300, y: 300, r: 0, c: [20, 33, 31], ox: 0, oy: 0 }));
+  const P = Array.from({ length: N }, () => ({ fx: 300, fy: 300, fr: 0, fc: [20, 33, 31], tx: 300, ty: 300, tr: 0, tc: [20, 33, 31], mx: 0, my: 0, dl: 0, x: 300, y: 300, r: 0, c: [20, 33, 31], ox: 0, oy: 0, h: 0, rx: 300, ry: 300 }));
+  let curScene = -1, prevScene = -1, switchAt = 0;
   const cv = $('#dotCanvas'); let ctx, W, k = 1;
   function sizeHero() { const f = fitCanvas(cv); ctx = f.ctx; W = f.w; k = W / 600; }
   sizeHero();
   let tStart = 0, DUR = 1150; const Z = 1.22;
   function morphTo(si, burst) {
     const sc = scenes[si], now = performance.now();
+    prevScene = curScene; curScene = si; switchAt = now;
     P.forEach((p, i) => {
-      p.fx = p.x; p.fy = p.y; p.fr = p.r; p.fc = p.c.slice();
+      p.fx = p.rx; p.fy = p.ry; p.fr = p.r; p.fc = p.c.slice();
       const d = sc[i];
+      p.h = d ? d.h : 0;
       if (d) { p.tx = d.x; p.ty = d.y; p.tr = d.r; p.tc = d.c; }
       else { const a = Math.random() * 6.283; p.tx = 300 + Math.cos(a) * 40; p.ty = 300 + Math.sin(a) * 40; p.tr = 0; p.tc = p.fc; }
       if (burst) { const a = Math.random() * 6.283, rr = 260 + Math.random() * 120; p.fx = 300 + Math.cos(a) * rr; p.fy = 300 + Math.sin(a) * rr; p.fr = 0; p.fc = p.tc; }
@@ -821,14 +820,63 @@ p { text-wrap: pretty; }
       p.y = u * u * p.fy + 2 * u * e * p.my + e * e * p.ty;
       p.r = p.fr + (p.tr - p.fr) * e;
       p.c = [0, 1, 2].map((j) => p.fc[j] + (p.tc[j] - p.fc[j]) * e);
+      p.rx = p.x; p.ry = p.y;
+      if (p.h && !reduce) {
+        const a = Math.max(0, now - tStart - p.dl - DUR) / (p.h === 2 ? 2200 : 14000) * 6.283, ca = Math.cos(a), sa = Math.sin(a), dx = p.x - 300, dy = p.y - 270;
+        p.rx = 300 + dx * ca - dy * sa; p.ry = 270 + dx * sa + dy * ca;
+      }
       if (p.r < 0.3) continue;
       let tx = 0, ty = 0;
-      if (mouse && !reduce) { const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy); if (d < 80 && d > 0.1) { const f = (80 - d) / 80 * 26; tx = dx / d * f; ty = dy / d * f; } }
+      if (mouse && !reduce) { const dx = p.rx - mouse.x, dy = p.ry - mouse.y, d = Math.hypot(dx, dy); if (d < 80 && d > 0.1) { const f = (80 - d) / 80 * 26; tx = dx / d * f; ty = dy / d * f; } }
       p.ox += (tx - p.ox) * 0.12; p.oy += (ty - p.oy) * 0.12;
       const br = reduce ? 1 : 1 + 0.07 * Math.sin(tt * 1.7 + p.tx * 0.03 + p.ty * 0.021);
       ctx.fillStyle = `rgb(${p.c[0] | 0},${p.c[1] | 0},${p.c[2] | 0})`;
-      ctx.beginPath(); ctx.arc(((p.x + p.ox - 300) * Z + 300) * k, ((p.y + p.oy - 300) * Z + 300) * k, p.r * br * k * Z, 0, 6.283); ctx.fill();
+      ctx.beginPath(); ctx.arc(((p.rx + p.ox - 300) * Z + 300) * k, ((p.ry + p.oy - 300) * Z + 300) * k, p.r * br * k * Z, 0, 6.283); ctx.fill();
     }
+    if (!reduce) {
+      const fa = Math.min(1, Math.max(0, (now - tStart - DUR - 250) / 500));
+      if (fa > 0 && curScene >= 0) drawFx(curScene, now, fa);
+      const pa = 1 - (now - switchAt) / 350;
+      if (pa > 0 && prevScene >= 0 && prevScene !== curScene) drawFx(prevScene, now, pa);
+    }
+  }
+
+  /* extra motion per scene, as on the live site: things fall between the chairs, steam and crumbs
+     leave the bread, sweat drips in the gym, sand pours out of the watch */
+  const FX = {"fall":[[292,0,[[0,0,9,"#ffd84d"],[-14,6,6,"#ffd84d"],[12,10,5,"#ffb800"]]],[296,0.85,[[0,0,7,"#14211f"],[12,-4,7,"#14211f"],[24,2,7,"#14211f"],[6,10,5,"#1fb5b0"]]],[304,1.7,[[0,0,11,"#ffb800"],[-4,-4,4,"#ffd84d"]]],[300,2.55,[[0,0,6,"#0b6e70"],[10,8,5,"#0b6e70"],[-8,10,4,"#1fb5b0"]]]],"wisps":[[[231.2,184,7.2,"#e39a3b"],[239.2,173.2,6.8,"#ffb800"],[243.6,162.3,6.5,"#ffd84d"],[243,151.5,6.1,"#e39a3b"],[237.5,140.7,5.7,"#ffb800"],[229,129.8,5.4,"#ffd84d"],[220.1,119,5,"#e39a3b"],[213.8,108.2,4.6,"#ffb800"],[212.1,97.3,4.3,"#ffd84d"],[215.5,86.5,3.9,"#e39a3b"],[222.9,75.7,3.5,"#ffb800"],[232,64.8,3.2,"#ffd84d"],[239.8,54,2.8,"#e39a3b"]],[[315.1,184,7.2,"#e39a3b"],[309.9,173.2,6.8,"#ffb800"],[301.4,162.3,6.5,"#ffd84d"],[292.5,151.5,6.1,"#e39a3b"],[286,140.7,5.7,"#ffb800"],[284,129.8,5.4,"#ffd84d"],[287.2,119,5,"#e39a3b"],[294.5,108.2,4.6,"#ffb800"],[303.6,97.3,4.3,"#ffd84d"],[311.5,86.5,3.9,"#e39a3b"],[315.7,75.7,3.5,"#ffb800"],[314.8,64.8,3.2,"#ffd84d"],[309.2,54,2.8,"#e39a3b"]],[[366.4,184,7.2,"#e39a3b"],[359.1,173.2,6.8,"#ffb800"],[356,162.3,6.5,"#ffd84d"],[358.1,151.5,6.1,"#e39a3b"],[364.6,140.7,5.7,"#ffb800"],[373.5,129.8,5.4,"#ffd84d"],[382,119,5,"#e39a3b"],[387.2,108.2,4.6,"#ffb800"],[387.5,97.3,4.3,"#ffd84d"],[382.8,86.5,3.9,"#e39a3b"],[374.6,75.7,3.5,"#ffb800"],[365.6,64.8,3.2,"#ffd84d"],[358.7,54,2.8,"#e39a3b"]]],"crumbs":[[230,290,7,-90,180,0.6],[330,260,6,20,210,0.9],[410,320,8,110,140,1.2],[270,270,5,-40,200,1.5],[370,290,6,70,175,1.8],[200,320,5,-120,140,1.05]],"drops":[[120,220,9,0],[480,230,10,0.5],[300,300,7,1],[160,240,6,1.5],[440,250,7,2]],"sand":[[406,3],[413,4],[411,5],[409,3],[407,4],[414,5],[412,3],[410,4],[408,5],[406,3]]};
+  const toS = (x, y) => [((x - 300) * Z + 300) * k, ((y - 300) * Z + 300) * k];
+  function dotAt(x, y, r, col, a) { if (a <= 0) return; const [X, Y] = toS(x, y); ctx.globalAlpha = Math.min(a, 1); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(X, Y, r * k * Z, 0, 6.283); ctx.fill(); }
+  const ph = (now, period, delay) => ((((now / 1000 - delay) % period) + period) % period) / period;
+  const key = (p, ks) => { for (let i = 1; i < ks.length; i++) if (p <= ks[i][0]) { const [t0, v0] = ks[i - 1], [t1, v1] = ks[i]; return v0 + (v1 - v0) * ((p - t0) / (t1 - t0)); } return ks[ks.length - 1][1]; };
+  function drawFx(s, now, A) {
+    if (s === 0) FX.fall.forEach(([X, d, g]) => {
+      const p = ph(now, 3.4, d), e = Math.pow(p, 1.7), op = key(p, [[0, 0], [0.12, 1], [0.8, 1], [1, 0]]);
+      const cx = X + 6 * p, cy = 70 + 430 * e, rt = (-20 + 180 * p) * Math.PI / 180, c = Math.cos(rt), sn = Math.sin(rt);
+      g.forEach(([gx, gy, r, col]) => dotAt(cx + gx * c - gy * sn, cy + gx * sn + gy * c, r, col, op * A));
+    });
+    if (s === 1) {
+      FX.wisps.forEach((w, i) => {
+        const p = ph(now, 3.6, i * 1.2), tx = key(p, [[0, 0], [0.6, -6], [1, 4]]), ty = key(p, [[0, 24], [0.6, -14], [1, -46]]), op = key(p, [[0, 0], [0.25, 1], [0.6, 0.9], [1, 0]]);
+        w.forEach(([x, y, r, col]) => dotAt(x + tx, y + ty, r, col, op * A));
+      });
+      FX.crumbs.forEach(([x, y, r, dx, dy, d]) => {
+        const p = ph(now, 3.2, d), q = p * p;
+        dotAt(x + key(q, [[0, 0], [0.3, dx * 0.5], [1, dx]]), y + key(q, [[0, 0], [0.3, -40], [1, dy]]), r, '#e39a3b', key(p, [[0, 0], [0.08, 1], [0.85, 1], [1, 0]]) * A);
+      });
+    }
+    if (s === 2) FX.drops.forEach(([x, y, r, d]) => {
+      const p = ph(now, 2.6, d), q = p * p;
+      dotAt(x, y + key(q, [[0, 0], [0.45, 40], [1, 230]]), r, '#1fb5b0', key(p, [[0, 0], [0.15, 1], [1, 0]]) * A);
+    });
+    if (s === 3) {
+      FX.sand.forEach(([x, r], i) => { const p = ph(now, 1.6, i * 0.16); dotAt(x, 384 + 140 * p, r, '#f2c94c', key(p, [[0, 0], [0.1, 1], [0.9, 1], [1, 0]]) * A); });
+      const b = 0.5 - 0.5 * Math.cos(now / 4000 * 6.283), sx = 0.85 + 0.15 * b, sy = 0.8 + 0.2 * b;
+      for (let x = 336; x <= 484; x += 9) {
+        const u = (x - 410) / 74, hh = 28 * (1 - u * u) * sy;
+        for (let y = 0; y <= hh; y += 8.5) dotAt(410 + (x - 410) * sx, 536 - y, 3.6, '#ffb800', A);
+      }
+    }
+    ctx.globalAlpha = 1;
   }
   requestAnimationFrame(frame);
 
@@ -856,79 +904,6 @@ p { text-wrap: pretty; }
     }
   }
   loop();
-
-  /* about: folders, spreadsheets and notes regroup into one system */
-  const mc = $('#mess'), tabs = $$('.mess-tabs button');
-  const rot = (x, y, cx, cy, a) => { const s = Math.sin(-a), c = Math.cos(-a), dx = x - cx, dy = y - cy; return [cx + dx * c - dy * s, cy + dx * s + dy * c]; };
-  const inR = (x, y, x0, y0, x1, y1) => x >= x0 && x <= x1 && y >= y0 && y <= y1;
-  function chaos(x, y) {
-    let p = rot(x, y, 120, 120, -0.18);
-    if (inR(p[0], p[1], 40, 64, 105, 84) || inR(p[0], p[1], 40, 80, 205, 175)) return '#1fb5b0';
-    p = rot(x, y, 300, 125, 0.13);
-    if (inR(p[0], p[1], 222, 60, 382, 190)) { const u = p[0] - 222, v = p[1] - 60; return u < 14 || v < 14 || u % 44 < 9 || v % 33 < 9 ? '#14211f' : '#cfd3c6'; }
-    p = rot(x, y, 115, 285, 0.16);
-    if (inR(p[0], p[1], 52, 225, 178, 345)) return '#ffd84d';
-    p = rot(x, y, 300, 305, 0.22);
-    if (inR(p[0], p[1], 232, 255, 292, 274) || inR(p[0], p[1], 232, 270, 372, 352)) return '#0b6e70';
-    p = rot(x, y, 195, 430, -0.08);
-    if (inR(p[0], p[1], 92, 382, 302, 478)) { const u = p[0] - 92, v = p[1] - 382; return u < 12 || v < 12 || u % 46 < 9 || v % 26 < 9 ? '#5f6d69' : '#cfd3c6'; }
-    return null;
-  }
-  function order(x, y) {
-    if (!inR(x, y, 26, 92, 374, 412)) return null;
-    if (y < 126) return x > 336 ? '#ffd84d' : '#14211f';
-    if (x < 38 || y > 400) return '#14211f';
-    if (x > 300) return y % 34 < 12 && y > 140 ? '#fbfaf5' : '#0b6e70';
-    if (inR(x, y, 48, 142, 128, 200)) return '#ffd84d';
-    if (inR(x, y, 140, 142, 214, 200)) return '#1fb5b0';
-    if (inR(x, y, 226, 142, 290, 200)) return '#14211f';
-    if (y > 216 && y < 228 && x < 290 && x > 48) return '#cfd3c6';
-    for (const [bx, t] of [[52, 330], [92, 296], [132, 312], [172, 262], [212, 280], [252, 238]]) if (inR(x, y, bx, t, bx + 26, 388)) return '#1fb5b0';
-    return null;
-  }
-  function sampleSet(fn) {
-    const out = [], step = 11, rh = step * 0.866;
-    for (let j = 0, y = 8; y < 496; j++, y += rh) for (let x = (j % 2 ? step / 2 : 0) + 6; x < 396; x += step) { const c = fn(x, y); if (c) out.push({ x, y, r: 4.1 + Math.random() * 0.9, c: hex(c) }); }
-    return out.sort((a, b) => a.x - b.x || a.y - b.y);
-  }
-  const MS = [sampleSet(chaos), sampleSet(order)];
-  const MN = Math.max(MS[0].length, MS[1].length);
-  const MP = Array.from({ length: MN }, () => ({ fx: 200, fy: 250, fr: 0, fc: [20, 33, 31], tx: 200, ty: 250, tr: 0, tc: [20, 33, 31], mx: 0, my: 0, dl: 0, x: 200, y: 250, r: 0, c: [20, 33, 31] }));
-  let mctx, mk = 1, mW = 0, mH = 0, mT = 0, mState = 0, mVis = false, mTimer;
-  function sizeMess() { const f = fitCanvas(mc); mctx = f.ctx; mW = f.w; mH = f.h; mk = Math.min(mW / 400, mH / 500); }
-  function messTo(s) {
-    mState = s; tabs.forEach((b, i) => b.setAttribute('aria-pressed', i === s));
-    const sc = MS[s];
-    MP.forEach((p, i) => {
-      p.fx = p.x; p.fy = p.y; p.fr = p.r; p.fc = p.c.slice();
-      const d = sc[i];
-      if (d) { p.tx = d.x; p.ty = d.y; p.tr = d.r; p.tc = d.c; } else { p.tx = p.x; p.ty = p.y; p.tr = 0; p.tc = p.fc; }
-      const a = Math.random() * 6.283, sp = 40 + Math.random() * 110;
-      p.mx = (p.fx + p.tx) / 2 + Math.cos(a) * sp; p.my = (p.fy + p.ty) / 2 + Math.sin(a) * sp; p.dl = Math.random() * 380;
-    });
-    mT = performance.now(); if (reduce) mT -= 3000;
-  }
-  function messAuto() { clearTimeout(mTimer); mTimer = setTimeout(() => { if (mVis) messTo(1 - mState); messAuto(); }, 4200); }
-  tabs.forEach((b, i) => b.addEventListener('click', () => { messTo(i); messAuto(); }));
-  new IntersectionObserver((es) => { mVis = es[0].isIntersecting; }).observe(mc);
-  sizeMess();
-  MS[0].forEach((d, i) => { const p = MP[i]; p.x = d.x; p.y = d.y; p.r = d.r; p.c = d.c; });
-  messTo(0); MP.forEach((p) => { p.mx = p.tx; p.my = p.ty; });
-  messAuto();
-  (function mframe(now) {
-    requestAnimationFrame(mframe);
-    if (!mVis || !mctx) return;
-    mctx.clearRect(0, 0, mW, mH);
-    const ox = (mW - 400 * mk) / 2;
-    for (const p of MP) {
-      const t = Math.min(Math.max((now - mT - p.dl) / 1100, 0), 1), e = ease(t), u = 1 - e;
-      p.x = u * u * p.fx + 2 * u * e * p.mx + e * e * p.tx; p.y = u * u * p.fy + 2 * u * e * p.my + e * e * p.ty;
-      p.r = p.fr + (p.tr - p.fr) * e; p.c = [0, 1, 2].map((j) => p.fc[j] + (p.tc[j] - p.fc[j]) * e);
-      if (p.r < 0.3) continue;
-      mctx.fillStyle = `rgb(${p.c[0] | 0},${p.c[1] | 0},${p.c[2] | 0})`;
-      mctx.beginPath(); mctx.arc(ox + p.x * mk, p.y * mk, p.r * mk, 0, 6.283); mctx.fill();
-    }
-  })(performance.now());
 
   /* ---------- testimonials ---------- */
   const qs = $$('.tq'), dotsEl = $('#tDots'), count = $('#tCount'); let cur = 0;
