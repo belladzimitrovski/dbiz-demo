@@ -39,6 +39,7 @@ a { color: inherit; }
 h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; }
 p { text-wrap: pretty; }
 :focus-visible { outline: 3px solid var(--dot-teal); outline-offset: 3px; border-radius: 4px; }
+[hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .wrap { max-width: 1240px; margin-inline: auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
@@ -256,20 +257,21 @@ p { text-wrap: pretty; }
 
 /* ===== Contact ===== */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(40px, 6vw, 100px); align-items: start; }
-.contact h2 { font-size: clamp(2.2rem, 4.4vw, 3.8rem); line-height: 1.05; }
-.contact .eyebrow { color: var(--ink); opacity: 0.75; }
-.kettle { margin-top: 34px; font-size: 1.2rem; line-height: 1.9; }
-.boil { display: flex; align-items: center; gap: 18px; margin-top: 30px; }
-.boil canvas { width: 110px; height: 110px; flex-shrink: 0; }
-.boil p { font-family: var(--display); font-weight: 600; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.25; }
+.contact { background: var(--paper-2); }
+.contact h2 { font-size: clamp(2.2rem, 4.4vw, 3.8rem); line-height: 1.08; }
+.contact h2 .hl { color: var(--teal); }
+.kettle { margin-top: 30px; font-size: 1.18rem; line-height: 1.9; color: var(--ink-soft); }
+.boil { display: flex; align-items: flex-end; gap: 16px; margin-top: 14px; }
+.boil canvas { width: 130px; height: 165px; flex-shrink: 0; }
+.boil p { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 2.4vw, 2rem); line-height: 1.25; color: var(--teal); padding-bottom: 18px; }
 .c-info { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 40px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .c-info span { display: inline-flex; align-items: center; gap: 8px; user-select: all; }
-.c-info span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
-.form { display: grid; gap: 26px; padding-top: 10px; position: relative; }
-.f label { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
-.f input, .f textarea { width: 100%; font: inherit; font-size: 1.15rem; color: var(--ink); background: transparent; border: 0; border-bottom: 2px solid var(--ink); padding: 8px 2px; border-radius: 0; resize: vertical; }
+.c-info span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--dot-teal); }
+.form { display: grid; gap: 24px; position: relative; background: var(--white); border: 2px solid var(--ink); border-radius: 26px; padding: clamp(24px, 3vw, 40px); box-shadow: 7px 7px 0 var(--dot-teal); }
+.f label { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--ink-soft); }
+.f input, .f textarea { width: 100%; font: inherit; font-size: 1.12rem; color: var(--ink); background: transparent; border: 0; border-bottom: 2px solid var(--line); padding: 8px 2px; border-radius: 0; resize: vertical; }
 .f input::placeholder, .f textarea::placeholder { color: color-mix(in srgb, var(--ink) 45%, transparent); }
-.f input:focus, .f textarea:focus { outline: none; border-bottom-color: var(--white); }
+.f input:focus, .f textarea:focus { outline: none; border-bottom-color: var(--dot-teal); }
 .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .form .btn { width: 100%; margin-top: 8px; padding-block: 17px; }
 .sent { display: flex; align-items: flex-end; gap: 10px; }
@@ -639,13 +641,12 @@ p { text-wrap: pretty; }
 </section>
 
 <!-- ===== Contact ===== -->
-<section class="band band-teal contact" id="contact">
-  <div class="ht ht-top" data-color="#1fb5b0"></div>
-  <div class="note"><b>מה השתנה</b>סיום חזק: משפט ענק בצד, טופס בלי כרטיס לבן (שדות עם קו תחתון). כוס הקפה מצוירת בנקודות. "עוד לפני שהמים יגיעו לנקודת הרתיחה" הוא משפט הסיום הגדול, בלי רובוט.</div>
+<section class="band contact" id="contact">
+  <div class="note"><b>מה השתנה</b>סיום בהיר וחם: רקע קרם, "מגיע לזנק" בטורקיז, כוס קפה מנקודות עם אדים שעולים, והטופס על דף לבן עם צל טורקיז. "עוד לפני שהמים יגיעו לנקודת הרתיחה" הוא משפט הסיום הגדול, בלי רובוט.</div>
   <div class="wrap contact-grid">
     <div class="rv">
       <p class="eyebrow">ומה בנקודה הזו?</p>
-      <h2>אתם מבינים שגם לעסק שלכם מגיע לזנק<span class="pd"></span></h2>
+      <h2>אתם מבינים שגם לעסק שלכם <span class="hl">מגיע לזנק</span><span class="pd"></span></h2>
       <p class="kettle">כי גם אם אתם מנהלים עסק עמוס ועתיר פעילות,<br>הגיע הזמן שתוכלו לשתות כוס קפה בנחת...<br>מלאו את הקומקום במים טריים,<br>הדליקו את המתג,<br>זה יכול לקרות כל כך מהר,</p>
       <div class="boil"><canvas id="cup" aria-hidden="true"></canvas><p>עוד לפני שהמים יגיעו לנקודת הרתיחה.</p></div>
       <p class="c-info"><span>052-710-1136</span><span>b7101136@gmail.com</span></p>
@@ -766,16 +767,38 @@ p { text-wrap: pretty; }
     }, (v) => `rgba(31,181,176,${0.06 + v * 0.16})`);
   }
 
-  /* coffee cup drawn in dots */
+  /* coffee cup drawn in dots, with dots of steam rising off it */
+  let cupImg = null, cupCtx, cupW = 0, cupH = 0, cupVis = false;
   function drawCup() {
-    const c = $('#cup'); const { ctx, w, h } = fitCanvas(c); ctx.clearRect(0, 0, w, h);
-    halftone(ctx, w, h, 7, (x, y) => {
+    const c = $('#cup'), f = fitCanvas(c); cupCtx = f.ctx; cupW = f.w; cupH = f.h;
+    cupImg = document.createElement('canvas'); cupImg.width = c.width; cupImg.height = c.height;
+    const o = cupImg.getContext('2d'), dpr = c.width / cupW, top = cupH * 0.38;
+    o.setTransform(dpr, 0, 0, dpr, 0, dpr * top);
+    halftone(o, cupW, cupH - top, 7, (x, y) => {
       const body = x > 0.16 && x < 0.66 && y > 0.4 && y < 0.82 && !(y > 0.7 && Math.hypot((x - 0.41) / 0.25, (y - 0.7) / 0.12) > 1);
       const hd = Math.hypot(x - 0.7, y - 0.56), handle = hd < 0.12 && hd > 0.06 && x > 0.62;
       const saucer = Math.hypot((x - 0.42) / 0.38, (y - 0.88) / 0.045) < 1;
       return body || handle ? 1 : saucer ? 0.75 : 0;
-    }, () => '#14211f');
+    }, (v) => (v > 0.9 ? '#0b6e70' : '#14211f'));
   }
+  new IntersectionObserver((es) => { cupVis = es[0].isIntersecting; }).observe($('#cup'));
+  (function steam(now) {
+    requestAnimationFrame(steam);
+    if (!cupVis || !cupImg) return;
+    cupCtx.setTransform(1, 0, 0, 1, 0, 0); cupCtx.clearRect(0, 0, cupImg.width, cupImg.height); cupCtx.drawImage(cupImg, 0, 0);
+    if (reduce) return;
+    const dpr = cupImg.width / cupW; cupCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const base = cupH * 0.38 + cupH * 0.62 * 0.36, cols = ['#ffd84d', '#1fb5b0', '#ffd84d'];
+    [0.29, 0.41, 0.53].forEach((fx, i) => {
+      for (let j = 0; j < 7; j++) {
+        const p = (now / 2600 + i * 0.33 + j / 7) % 1;
+        cupCtx.globalAlpha = Math.sin(p * Math.PI);
+        cupCtx.fillStyle = cols[i];
+        cupCtx.beginPath(); cupCtx.arc(cupW * fx + Math.sin(p * 6 + i * 2) * cupW * 0.05, base - p * cupH * 0.44, (1 - p) * 4 + 1.2, 0, 6.283); cupCtx.fill();
+      }
+    });
+    cupCtx.globalAlpha = 1;
+  })(performance.now());
 
   function drawAll() { drawEdges(); drawSol(); drawCup(); }
   drawAll();
