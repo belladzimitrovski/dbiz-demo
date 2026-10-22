@@ -83,7 +83,6 @@ p { text-wrap: pretty; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); align-items: center; gap: 20px; }
 .hero-copy { min-width: 0; position: relative; z-index: 2; }
 .hero .eyebrow { color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.15rem); display: flex; align-items: center; gap: 10px; }
-.hero .eyebrow::before { content: ""; width: 34px; height: 2px; background: var(--ink); }
 .them { font-family: var(--display); font-weight: 500; font-size: clamp(1.35rem, min(2.3vw, 3.6vh), 2rem); color: var(--ink-soft); min-height: 1.3em; margin-top: clamp(14px, 3vh, 28px); }
 .you { font-family: var(--display); font-weight: 700; font-size: clamp(2.1rem, min(4.4vw, 7vh), 4rem); line-height: 1.04; color: var(--teal); min-height: 2.1em; margin-top: 10px; letter-spacing: -0.01em; }
 .fixed { color: var(--ink); }
@@ -382,7 +381,7 @@ p { text-wrap: pretty; }
   <div class="note"><b>מה השתנה</b>ציור הנקודות מתפרק ומתחבר לאובייקט הבא (אפשר להעביר עליו את העכבר). נשארו כל התנועות: דברים נופלים בין הכסאות, אדים ופירורים מהלחם, טיפות זיעה, וחול שנשפך מהשעון עם שני מחוגים צהובים. אין עיגול מאחוריו, והוא גולש מהמסך. "אתם רואים" ענק, והנקודה בסוף היא נקודה צהובה.</div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">נקודת מבט של לקוחות, היא לא נקודת המבט שלכם- בעלי העסק...</p>
+      <p class="eyebrow">נקודת מבט של לקוחות, היא לא נקודת המבט שלכם - בעלי העסק...</p>
       <div aria-hidden="true">
         <p class="them"><span class="fixed">הם</span> <span id="them"></span></p>
         <p class="you"><span class="fixed">אתם</span> <span id="you"></span><span class="pd" id="youDot"></span><span class="caret" id="caret"></span></p>
@@ -787,6 +786,10 @@ p { text-wrap: pretty; }
     const pal = S[k].pal.map(hex);
     const raw = S[k].pal; return S[k].d.map(([x, y, r, c]) => { const h = k === 'watch' ? (raw[c] === '#ffffff' ? 1 : raw[c] === '#ffd84d' ? 2 : 0) : 0; return { x, y, r, h, c: h ? hex('#ffd84d') : pal[c] }; }).sort((a, b) => a.y - b.y || a.x - b.x);
   });
+  /* the dial under the hands is filled in, so the hands turn over a whole face */
+  { const w = scenes[3], base = w.filter((d) => !d.h);
+    const fill = w.filter((d) => d.h).map((d) => { let b = base[0], bd = Infinity; for (const o of base) { const dd = (o.x - d.x) ** 2 + (o.y - d.y) ** 2; if (dd < bd) { bd = dd; b = o; } } return { x: d.x, y: d.y, r: b.r, h: 0, c: b.c }; });
+    scenes[3] = fill.concat(w); }
   const N = Math.max(...scenes.map((s) => s.length));
   const P = Array.from({ length: N }, () => ({ fx: 300, fy: 300, fr: 0, fc: [20, 33, 31], tx: 300, ty: 300, tr: 0, tc: [20, 33, 31], mx: 0, my: 0, dl: 0, x: 300, y: 300, r: 0, c: [20, 33, 31], ox: 0, oy: 0, h: 0, rx: 300, ry: 300 }));
   let curScene = -1, prevScene = -1, switchAt = 0;
