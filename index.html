@@ -114,17 +114,19 @@ p { text-wrap: pretty; }
 .circled svg { position: absolute; inset: -0.32em -0.4em; width: calc(100% + 0.8em); height: calc(100% + 0.64em); overflow: visible; pointer-events: none; }
 .circled path { fill: none; stroke: var(--dot-teal); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.3s; vector-effect: non-scaling-stroke; }
 .in .circled path { stroke-dashoffset: 0; }
-.marker { padding: 0 0.1em; background-image: linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 90%, transparent 90%); background-repeat: no-repeat; background-position: 100% 0; background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-size 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.3s; }
-.marker.teal { background-image: linear-gradient(transparent 55%, rgba(31, 181, 176, 0.42) 55%, rgba(31, 181, 176, 0.42) 90%, transparent 90%); }
+.marker { padding: 0 0.1em; background-image: linear-gradient(transparent 68%, var(--yellow) 68%, var(--yellow) 92%, transparent 92%); background-repeat: no-repeat; background-position: 100% 0; background-size: 0% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-size 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.3s; }
+.marker.teal { background-image: linear-gradient(transparent 68%, rgba(31, 181, 176, 0.42) 68%, rgba(31, 181, 176, 0.42) 92%, transparent 92%); }
+.band-ink .marker { background-image: linear-gradient(transparent 84%, var(--yellow) 84%, var(--yellow) 96%, transparent 96%); color: var(--yellow); }
 .in .marker, .marker.in { background-size: 100% 100%; }
 
 /* ===== Solution: one huge statement over a halftone field ===== */
 .sol { overflow: hidden; }
-.sol-field { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.9; }
+.sol-field { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.75; }
 .sol .wrap { position: relative; }
 .sol h2 { font-size: clamp(2.4rem, 6vw, 5.4rem); line-height: 0.98; font-weight: 700; letter-spacing: -0.015em; max-width: 9.5em; }
-.sol h2 .hl { color: var(--teal-light); display: block; }
-.sol-lines { margin-top: 34px; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.65; max-width: 26em; color: color-mix(in srgb, var(--paper) 86%, transparent); }
+.sol h2 { color: #e9e6dc; }
+.sol h2 .hl { color: #5cc3ba; display: block; }
+.sol-lines { margin-top: 34px; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.65; max-width: 26em; color: color-mix(in srgb, var(--paper) 74%, transparent); }
 .slogan { font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 2rem); margin-top: 40px; display: inline-flex; align-items: baseline; gap: 0.3em; }
 
 /* ===== About: portrait in dots ===== */
@@ -164,9 +166,11 @@ p { text-wrap: pretty; }
 
 /* ===== Options: the list as one running line of text ===== */
 .opt-head { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); margin-bottom: clamp(30px, 4vw, 50px); }
-.opt-say { position: relative; background: var(--white); border: 2px solid var(--ink); border-radius: 26px 26px 26px 6px; padding: clamp(16px, 2.4vw, 26px) clamp(20px, 3vw, 36px); box-shadow: 5px 5px 0 var(--ink); }
+.opt-say { position: relative; background: var(--white); border: 2px solid var(--ink); border-radius: 22px 22px 22px 6px; padding: 12px 22px; box-shadow: 4px 4px 0 var(--ink); }
+.opt-say .h2 { font-size: clamp(1.4rem, 2.3vw, 1.95rem); }
+.opt-say .eyebrow { font-size: 1rem; }
 .opt-say .eyebrow { margin-bottom: 4px; }
-.opt-head img { width: clamp(110px, 13vw, 170px); height: auto; filter: drop-shadow(0 14px 16px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
+.opt-head img { width: clamp(76px, 8vw, 110px); height: auto; filter: drop-shadow(0 14px 16px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
 .opt-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
 .opt-grid li { background: var(--paper-2); display: flex; align-items: center; gap: 14px; padding: clamp(18px, 2.4vw, 28px) clamp(14px, 1.8vw, 24px); font-family: var(--display); font-weight: 500; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.3; transition: background 0.25s; }
 .opt-grid svg { width: 30px; height: 30px; flex-shrink: 0; fill: none; stroke: var(--teal); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--pop); }
@@ -174,8 +178,8 @@ p { text-wrap: pretty; }
 .opt-grid li:hover svg { transform: scale(1.12) rotate(-6deg); }
 .tools { margin-top: clamp(60px, 7vw, 90px); padding-block: 26px; border-block: 1px solid var(--line); overflow: hidden; direction: ltr; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
 .lane { display: flex; width: max-content; animation: mq 34s linear infinite; }
-.lane span { display: inline-flex; align-items: center; gap: 10px; padding-inline: 34px; font-family: var(--display); font-weight: 600; font-size: 1.3rem; color: var(--muted); filter: grayscale(1); opacity: 0.75; transition: filter 0.3s, opacity 0.3s; }
-.lane span:hover { filter: none; opacity: 1; color: var(--ink); }
+.lane span { display: inline-flex; align-items: center; gap: 10px; padding-inline: 34px; font-family: var(--display); font-weight: 600; font-size: 1.3rem; color: var(--ink-soft); transition: transform 0.3s var(--ease); }
+.lane span:hover { transform: translateY(-3px); }
 .lane img { height: 28px; width: auto; }
 @keyframes mq { to { transform: translateX(-50%); } }
 .cta-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: clamp(50px, 6vw, 80px); }
@@ -247,7 +251,7 @@ p { text-wrap: pretty; }
 .clients { padding-block: clamp(80px, 9vw, 120px); }
 .clients h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); text-align: center; }
 .clients .tools { border: 0; margin-top: 40px; }
-.clients .lane span { padding-inline: 40px; filter: grayscale(1); opacity: 0.6; mix-blend-mode: multiply; }
+.clients .lane span { padding-inline: 40px; mix-blend-mode: multiply; }
 .clients .lane img { height: 64px; max-width: 170px; object-fit: contain; }
 
 /* ===== Contact ===== */
@@ -478,7 +482,7 @@ p { text-wrap: pretty; }
 
 <!-- ===== Options ===== -->
 <section class="band band-paper2" id="options">
-  <div class="note"><b>מה השתנה</b>בלי 12 מסגרות מעוגלות: רשת מסודרת עם קווים דקים, ולכל אפשרות אייקון קטן. הכלים בלי כפתורים, באפור, ומקבלים צבע במעבר עכבר. הרובוט נשאר, והמשפט שלו כתוב בבועה גדולה.</div>
+  <div class="note"><b>מה השתנה</b>בלי 12 מסגרות מעוגלות: רשת מסודרת עם קווים דקים, ולכל אפשרות אייקון קטן. הכלים בלי כפתורים, בצבעים המקוריים שלהם. הרובוט נשאר, והמשפט שלו כתוב בבועה גדולה.</div>
   <div class="wrap">
     <div class="opt-head rv">
       <div class="opt-say">
@@ -615,7 +619,7 @@ p { text-wrap: pretty; }
 
 <!-- ===== Clients ===== -->
 <section class="clients" id="clients">
-  <div class="note" style="top: 100px"><b>מה השתנה</b>הלוגואים בלי מסגרות, באפור אחיד, ומקבלים צבע במעבר עכבר.</div>
+  <div class="note" style="top: 100px"><b>מה השתנה</b>הלוגואים בלי מסגרות, בצבעים המקוריים, באותו גובה.</div>
   <div class="wrap">
     <h2 class="rv">עסקים שנקודת המפנה שלהם התחילה כאן<span class="pd"></span></h2>
     <div class="tools rv">
@@ -759,7 +763,7 @@ p { text-wrap: pretty; }
     halftone(ctx, w, h, 22, (x, y) => {
       const dx = (x - 0.04) * ar, dy = y - 0.62; const d = Math.sqrt(dx * dx + dy * dy);
       return 0.95 - d * 0.75;
-    }, (v) => `rgba(31,181,176,${0.18 + v * 0.35})`);
+    }, (v) => `rgba(31,181,176,${0.06 + v * 0.16})`);
   }
 
   /* coffee cup drawn in dots */
