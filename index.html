@@ -136,12 +136,13 @@ p { text-wrap: pretty; }
 .about-hello { font-family: var(--display); font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; margin-bottom: 22px; }
 .about-text p:not(.about-hello) { font-size: 1.2rem; color: var(--ink-soft); line-height: 1.9; }
 .portrait { position: relative; min-width: 0; }
-.portrait canvas { width: 100%; aspect-ratio: 4 / 5; display: block; }
-.portrait-cap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
-.upload { font: inherit; font-weight: 600; color: var(--ink); border-bottom: 2px solid var(--yellow); cursor: pointer; }
-.upload input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.helper { position: absolute; left: -26px; bottom: 60px; display: flex; align-items: flex-end; gap: 4px; }
-.helper img { width: 116px; height: auto; filter: drop-shadow(0 14px 16px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
+.portrait canvas { width: 100%; aspect-ratio: 4 / 5; max-height: 68svh; display: block; }
+.mess-tabs { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; }
+.mess-tabs span { width: 40px; border-top: 3px dotted var(--ink); }
+.mess-tabs button { font: inherit; font-family: var(--display); font-weight: 600; font-size: 1rem; background: none; border: 0; padding: 4px 2px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; }
+.mess-tabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--yellow); }
+.helper { position: absolute; left: -84px; bottom: -6px; display: flex; align-items: flex-end; gap: 4px; }
+.helper img { width: 98px; height: auto; filter: drop-shadow(0 14px 16px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(-8px); } }
 .bubble { background: var(--white); border: 2px solid var(--ink); border-radius: 20px 20px 20px 4px; padding: 10px 16px; font-size: 0.98rem; line-height: 1.5; box-shadow: 4px 4px 0 var(--ink); margin-bottom: 70px; max-width: 220px; }
 
@@ -296,7 +297,8 @@ p { text-wrap: pretty; }
   .pains-lead, .why-head { position: static; }
   .head-split { grid-template-columns: minmax(0, 1fr); }
   .portrait { max-width: 440px; }
-  .helper { left: -8px; }
+  .helper { position: static; justify-content: center; margin-top: 8px; }
+  .helper .bubble { margin-bottom: 40px; }
   .road-band { display: none; }
   .road-steps { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 0; position: relative; }
   .road-steps::before { content: ""; position: absolute; top: 30px; bottom: 30px; right: 23px; border-right: 5px dotted var(--ink); }
@@ -422,7 +424,7 @@ p { text-wrap: pretty; }
 
 <!-- ===== About ===== -->
 <section class="band" id="about">
-  <div class="note"><b>מה השתנה</b>התמונה שלך מעובדת לנקודות, בשפה של ציורי הפתיחה. כאן יש צללית זמנית: אפשר להעלות תמונה ולראות איך זה ייראה (התמונה לא יוצאת מהדפדפן). הרובוט מופיע רק כאן ועוד פעם אחת.</div>
+  <div class="note"><b>מה השתנה</b>במקום תמונה: תיקיות, אקסלים ופתקים מנקודות שמתחברים למערכת אחת מסודרת, בדיוק מה שכתוב בפסקה. אפשר ללחוץ על "הבלגן" ו"המערכת". הרובוט מופיע רק כאן ועוד פעם אחת.</div>
   <div class="wrap">
     <div class="head-split rv">
       <div>
@@ -438,14 +440,15 @@ p { text-wrap: pretty; }
         <p>אני מתמחה בתחום המחשוב והטכנולוגיה ועוסקת בבניית מערכות חכמות לבעלי עסקים. אני עוזרת להם להכניס קצת סדר לעסק, למצוא ידיים ורגליים בבלגן הדיגיטלי ולהמיר את עשרות התיקיות, האקסלים והתזכורות במערכת אחת חכמה- <strong class="marker teal">שפשוט עובדת.</strong></p>
       </div>
       <figure class="portrait rv">
-        <canvas id="portrait" aria-label="דיוקן של בלי דזימטרובסקי בנקודות" role="img"></canvas>
+        <canvas id="mess" role="img" aria-label="עשרות תיקיות, אקסלים ופתקים מתחברים למערכת אחת"></canvas>
         <div class="helper">
           <img src="img/robot-hello-3d.png" alt="הרובוט של DBIZ">
           <p class="bubble">ואני העוזר שלה-<br><strong>ביחד אנחנו צוות מנצח 😊</strong></p>
         </div>
-        <figcaption class="portrait-cap">
-          <span id="portraitCap">כאן תבוא התמונה שלך, בנקודות</span>
-          <label class="upload">להדגמה: העלי תמונה<input type="file" id="photoIn" accept="image/*"></label>
+        <figcaption class="mess-tabs">
+          <button type="button" aria-pressed="true">הבלגן</button>
+          <span aria-hidden="true"></span>
+          <button type="button" aria-pressed="false">המערכת</button>
         </figcaption>
       </figure>
     </div>
@@ -753,43 +756,9 @@ p { text-wrap: pretty; }
     }, () => '#14211f');
   }
 
-  /* portrait: a placeholder silhouette until a photo is chosen */
-  let photo = null;
-  function drawPortrait() {
-    const c = $('#portrait'); const { ctx, w, h } = fitCanvas(c); ctx.clearRect(0, 0, w, h);
-    const step = Math.max(7, w / 52);
-    let sample;
-    if (photo) {
-      const oc = document.createElement('canvas'), sw = 120, sh = 150; oc.width = sw; oc.height = sh;
-      const o = oc.getContext('2d'), s = Math.max(sw / photo.width, sh / photo.height);
-      o.drawImage(photo, (sw - photo.width * s) / 2, (sh - photo.height * s) / 2, photo.width * s, photo.height * s);
-      const d = o.getImageData(0, 0, sw, sh).data;
-      sample = (x, y) => {
-        const i = (Math.min(sh - 1, Math.floor(y * sh)) * sw + Math.min(sw - 1, Math.floor(x * sw))) * 4;
-        const lum = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255;
-        return Math.pow(1 - lum, 0.9) * 1.15;
-      };
-    } else {
-      sample = (x, y) => {
-        const fd = Math.hypot((x - 0.5) / 0.17, (y - 0.4) / 0.21), head = 1 - sstep(0.9, 1.04, fd);
-        const hairE = 1 - sstep(0.92, 1.05, Math.hypot((x - 0.5) / 0.235, (y - 0.4) / 0.3)), hair = y < 0.27 || fd > 1 ? hairE : 0;
-        const sh = 1 - sstep(0.94, 1.04, Math.hypot((x - 0.5) / 0.44, (y - 1.03) / 0.33));
-        const neck = Math.abs(x - 0.5) < 0.075 && y > 0.5 && y < 0.75 ? 1 : 0;
-        const bg = 0.12 + 0.1 * (1 - y);
-        return Math.max(hair * 0.92, head * 0.3, sh * 0.8, neck * 0.3, bg);
-      };
-    }
-    halftone(ctx, w, h, step, sample, (v, x, y) => (v > 0.5 ? '#14211f' : y < 0.5 && x < 0.3 ? '#1fb5b0' : '#0b6e70'));
-  }
-  $('#photoIn').addEventListener('change', (e) => {
-    const f = e.target.files && e.target.files[0]; if (!f) return;
-    const img = new Image(); img.onload = () => { photo = img; drawPortrait(); $('#portraitCap').textContent = 'ככה התמונה שלך תיראה באתר'; };
-    img.src = URL.createObjectURL(f);
-  });
-
-  function drawAll() { drawEdges(); drawSol(); drawCup(); drawPortrait(); }
+  function drawAll() { drawEdges(); drawSol(); drawCup(); }
   drawAll();
-  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawAll(); sizeHero(); }, 150); });
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawAll(); sizeHero(); sizeMess(); }, 150); });
   document.fonts && document.fonts.ready.then(drawEdges);
 
   /* ---------- hero: the dot picture breaks apart and regroups ---------- */
@@ -872,6 +841,79 @@ p { text-wrap: pretty; }
     }
   }
   loop();
+
+  /* about: folders, spreadsheets and notes regroup into one system */
+  const mc = $('#mess'), tabs = $$('.mess-tabs button');
+  const rot = (x, y, cx, cy, a) => { const s = Math.sin(-a), c = Math.cos(-a), dx = x - cx, dy = y - cy; return [cx + dx * c - dy * s, cy + dx * s + dy * c]; };
+  const inR = (x, y, x0, y0, x1, y1) => x >= x0 && x <= x1 && y >= y0 && y <= y1;
+  function chaos(x, y) {
+    let p = rot(x, y, 120, 120, -0.18);
+    if (inR(p[0], p[1], 40, 64, 105, 84) || inR(p[0], p[1], 40, 80, 205, 175)) return '#1fb5b0';
+    p = rot(x, y, 300, 125, 0.13);
+    if (inR(p[0], p[1], 222, 60, 382, 190)) { const u = p[0] - 222, v = p[1] - 60; return u < 14 || v < 14 || u % 44 < 9 || v % 33 < 9 ? '#14211f' : '#cfd3c6'; }
+    p = rot(x, y, 115, 285, 0.16);
+    if (inR(p[0], p[1], 52, 225, 178, 345)) return '#ffd84d';
+    p = rot(x, y, 300, 305, 0.22);
+    if (inR(p[0], p[1], 232, 255, 292, 274) || inR(p[0], p[1], 232, 270, 372, 352)) return '#0b6e70';
+    p = rot(x, y, 195, 430, -0.08);
+    if (inR(p[0], p[1], 92, 382, 302, 478)) { const u = p[0] - 92, v = p[1] - 382; return u < 12 || v < 12 || u % 46 < 9 || v % 26 < 9 ? '#5f6d69' : '#cfd3c6'; }
+    return null;
+  }
+  function order(x, y) {
+    if (!inR(x, y, 26, 92, 374, 412)) return null;
+    if (y < 126) return x > 336 ? '#ffd84d' : '#14211f';
+    if (x < 38 || y > 400) return '#14211f';
+    if (x > 300) return y % 34 < 12 && y > 140 ? '#fbfaf5' : '#0b6e70';
+    if (inR(x, y, 48, 142, 128, 200)) return '#ffd84d';
+    if (inR(x, y, 140, 142, 214, 200)) return '#1fb5b0';
+    if (inR(x, y, 226, 142, 290, 200)) return '#14211f';
+    if (y > 216 && y < 228 && x < 290 && x > 48) return '#cfd3c6';
+    for (const [bx, t] of [[52, 330], [92, 296], [132, 312], [172, 262], [212, 280], [252, 238]]) if (inR(x, y, bx, t, bx + 26, 388)) return '#1fb5b0';
+    return null;
+  }
+  function sampleSet(fn) {
+    const out = [], step = 11, rh = step * 0.866;
+    for (let j = 0, y = 8; y < 496; j++, y += rh) for (let x = (j % 2 ? step / 2 : 0) + 6; x < 396; x += step) { const c = fn(x, y); if (c) out.push({ x, y, r: 4.1 + Math.random() * 0.9, c: hex(c) }); }
+    return out.sort((a, b) => a.x - b.x || a.y - b.y);
+  }
+  const MS = [sampleSet(chaos), sampleSet(order)];
+  const MN = Math.max(MS[0].length, MS[1].length);
+  const MP = Array.from({ length: MN }, () => ({ fx: 200, fy: 250, fr: 0, fc: [20, 33, 31], tx: 200, ty: 250, tr: 0, tc: [20, 33, 31], mx: 0, my: 0, dl: 0, x: 200, y: 250, r: 0, c: [20, 33, 31] }));
+  let mctx, mk = 1, mW = 0, mH = 0, mT = 0, mState = 0, mVis = false, mTimer;
+  function sizeMess() { const f = fitCanvas(mc); mctx = f.ctx; mW = f.w; mH = f.h; mk = Math.min(mW / 400, mH / 500); }
+  function messTo(s) {
+    mState = s; tabs.forEach((b, i) => b.setAttribute('aria-pressed', i === s));
+    const sc = MS[s];
+    MP.forEach((p, i) => {
+      p.fx = p.x; p.fy = p.y; p.fr = p.r; p.fc = p.c.slice();
+      const d = sc[i];
+      if (d) { p.tx = d.x; p.ty = d.y; p.tr = d.r; p.tc = d.c; } else { p.tx = p.x; p.ty = p.y; p.tr = 0; p.tc = p.fc; }
+      const a = Math.random() * 6.283, sp = 40 + Math.random() * 110;
+      p.mx = (p.fx + p.tx) / 2 + Math.cos(a) * sp; p.my = (p.fy + p.ty) / 2 + Math.sin(a) * sp; p.dl = Math.random() * 380;
+    });
+    mT = performance.now(); if (reduce) mT -= 3000;
+  }
+  function messAuto() { clearTimeout(mTimer); mTimer = setTimeout(() => { if (mVis) messTo(1 - mState); messAuto(); }, 4200); }
+  tabs.forEach((b, i) => b.addEventListener('click', () => { messTo(i); messAuto(); }));
+  new IntersectionObserver((es) => { mVis = es[0].isIntersecting; }).observe(mc);
+  sizeMess();
+  MS[0].forEach((d, i) => { const p = MP[i]; p.x = d.x; p.y = d.y; p.r = d.r; p.c = d.c; });
+  messTo(0); MP.forEach((p) => { p.mx = p.tx; p.my = p.ty; });
+  messAuto();
+  (function mframe(now) {
+    requestAnimationFrame(mframe);
+    if (!mVis || !mctx) return;
+    mctx.clearRect(0, 0, mW, mH);
+    const ox = (mW - 400 * mk) / 2;
+    for (const p of MP) {
+      const t = Math.min(Math.max((now - mT - p.dl) / 1100, 0), 1), e = ease(t), u = 1 - e;
+      p.x = u * u * p.fx + 2 * u * e * p.mx + e * e * p.tx; p.y = u * u * p.fy + 2 * u * e * p.my + e * e * p.ty;
+      p.r = p.fr + (p.tr - p.fr) * e; p.c = [0, 1, 2].map((j) => p.fc[j] + (p.tc[j] - p.fc[j]) * e);
+      if (p.r < 0.3) continue;
+      mctx.fillStyle = `rgb(${p.c[0] | 0},${p.c[1] | 0},${p.c[2] | 0})`;
+      mctx.beginPath(); mctx.arc(ox + p.x * mk, p.y * mk, p.r * mk, 0, 6.283); mctx.fill();
+    }
+  })(performance.now());
 
   /* ---------- testimonials ---------- */
   const qs = $$('.tq'), dotsEl = $('#tDots'), count = $('#tCount'); let cur = 0;
