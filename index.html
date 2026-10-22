@@ -280,9 +280,12 @@ p { text-wrap: pretty; }
 
 /* ===== Footer ===== */
 .foot { background: var(--ink); color: color-mix(in srgb, var(--paper) 70%, transparent); padding-block: 50px; font-size: 0.92rem; }
-.foot .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-.foot img { height: 34px; filter: brightness(0) invert(1); }
-.foot b { color: var(--paper); font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
+.foot { padding-block: 44px 90px; text-align: center; }
+.foot .wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.foot-credit { font-size: 0.85rem; color: color-mix(in srgb, var(--paper) 55%, transparent); }
+.foot-rights { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+.foot-rights span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.foot img { height: 44px; width: auto; margin-top: 14px; filter: brightness(0) invert(1); }
 
 /* ===== Reveal on scroll (only for things below the first screen) ===== */
 .rv { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
@@ -670,9 +673,8 @@ p { text-wrap: pretty; }
 
 <footer class="foot">
   <div class="wrap">
-    <b>דיביז. העסק עובד - נקודה.</b>
-    <span>אסטרטגיה וקופי: חיה הרשטיק · TEXTEAM · 0527193590</span>
-    <span>© 2026 DBIZ · בלי דזימטרובסקי · כל הזכויות שמורות</span>
+    <p class="foot-credit">אסטרטגיה וקופי: חיה הרשטיק · TEXTEAM · 0527193590</p>
+    <p class="foot-rights">© 2026 DBIZ · בלי דזימטרובסקי · כל הזכויות שמורות · <span>052-710-1136</span> · <span>b7101136@gmail.com</span></p>
     <img src="img/logo-dbiz.png" alt="DBIZ">
   </div>
 </footer>
