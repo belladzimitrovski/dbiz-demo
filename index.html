@@ -164,6 +164,10 @@ p { text-wrap: pretty; }
 .belief-foot { grid-column: 1 / -1; font-family: var(--display); font-size: clamp(1.4rem, 2.4vw, 2rem); color: var(--teal); text-align: center; padding-top: 30px; border-top: 1px solid var(--line); }
 
 /* ===== Options: the list as one running line of text ===== */
+.opt-head { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); margin-bottom: clamp(30px, 4vw, 50px); }
+.opt-say { position: relative; background: var(--white); border: 2px solid var(--ink); border-radius: 26px 26px 26px 6px; padding: clamp(16px, 2.4vw, 26px) clamp(20px, 3vw, 36px); box-shadow: 5px 5px 0 var(--ink); }
+.opt-say .eyebrow { margin-bottom: 4px; }
+.opt-head img { width: clamp(110px, 13vw, 170px); height: auto; filter: drop-shadow(0 14px 16px rgba(20, 33, 31, 0.18)); animation: float 4s ease-in-out infinite; }
 .opt-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
 .opt-grid li { background: var(--paper-2); display: flex; align-items: center; gap: 14px; padding: clamp(18px, 2.4vw, 28px) clamp(14px, 1.8vw, 24px); font-family: var(--display); font-weight: 500; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.3; transition: background 0.25s; }
 .opt-grid svg { width: 30px; height: 30px; flex-shrink: 0; fill: none; stroke: var(--teal); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--pop); }
@@ -431,7 +435,7 @@ p { text-wrap: pretty; }
 
 <!-- ===== About ===== -->
 <section class="band" id="about">
-  <div class="note"><b>מה השתנה</b>כותרת, שורת המשנה והטקסט יושבים יחד בצד ימין, והרובוט עם הבועה לצידם. הרובוט מופיע רק כאן ועוד פעם אחת.</div>
+  <div class="note"><b>מה השתנה</b>כותרת, שורת המשנה והטקסט יושבים יחד בצד ימין, והרובוט עם הבועה לצידם. </div>
   <div class="wrap">
     <div class="about-grid">
       <div class="about-text rv">
@@ -475,11 +479,14 @@ p { text-wrap: pretty; }
 
 <!-- ===== Options ===== -->
 <section class="band band-paper2" id="options">
-  <div class="note"><b>מה השתנה</b>בלי 12 מסגרות מעוגלות: רשת מסודרת עם קווים דקים, ולכל אפשרות אייקון קטן. הכלים בלי כפתורים, באפור, ומקבלים צבע במעבר עכבר. הרובוט ירד מכאן, והמשפט שלו הפך לכותרת.</div>
+  <div class="note"><b>מה השתנה</b>בלי 12 מסגרות מעוגלות: רשת מסודרת עם קווים דקים, ולכל אפשרות אייקון קטן. הכלים בלי כפתורים, באפור, ומקבלים צבע במעבר עכבר. הרובוט נשאר, והמשפט שלו כתוב בבועה גדולה.</div>
   <div class="wrap">
-    <div class="rv" style="margin-bottom: clamp(36px, 5vw, 60px)">
-      <p class="eyebrow">אינסוף אפשרויות במערכת אחת,</p>
-      <h2 class="h2">תרשו לי להציע לכם?</h2>
+    <div class="opt-head rv">
+      <div class="opt-say">
+        <p class="eyebrow">אינסוף אפשרויות במערכת אחת,</p>
+        <h2 class="h2">תרשו לי להציע לכם?</h2>
+      </div>
+      <img src="img/robot-wave-3d.png" alt="הרובוט של DBIZ מנופף">
     </div>
     <ul class="opt-grid rv">
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><span>מערכת דיוור</span></li>
