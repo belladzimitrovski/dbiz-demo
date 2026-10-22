@@ -1,3 +1,4 @@
-# DBIZ - demo of a new design
+# DBIZ - previous design
 
-A design proposal for the DBIZ landing page. The live site stays at https://belladzimitrovski.github.io/dbiz-site/
+The design that was live before the 2026-10-23 redesign, kept so it can be brought back.
+The live site: https://github.com/belladzimitrovski/dbiz-site
